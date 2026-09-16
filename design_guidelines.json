@@ -1,0 +1,97 @@
+{
+  "project_name": "Organ Donation Platform",
+  "theme": "LIGHT",
+  "archetype": "1 (Organic & Earthy) - Health & Social Impact",
+  "design_philosophy": "Serious, life-saving, trustworthy, human, and hopeful. Avoid cold/clinical styles and generic SaaS purples/teals. Prioritize transparency and emotional connection. Culturally resonant for India.",
+  "typography": {
+    "primary_heading_font": "Cormorant Garamond",
+    "secondary_heading_font": "Outfit",
+    "body_font": "Outfit",
+    "rules": [
+      "NO INTER or generic sans for headings.",
+      "H1 (Hero): text-5xl sm:text-6xl tracking-tighter leading-none.",
+      "H2: text-3xl sm:text-4xl tracking-tight.",
+      "Body: text-base leading-relaxed.",
+      "Labels: text-xs uppercase tracking-[0.2em]."
+    ]
+  },
+  "colors": {
+    "background_base": "#F9F7F3",
+    "background_secondary": "#EDF0EB",
+    "primary_trust": "#2A5A4A",
+    "primary_hover": "#1E4236",
+    "accent_heart": "#E06D53",
+    "accent_hover": "#C85A42",
+    "text_main": "#1C2220",
+    "text_muted": "#4A5D54",
+    "border_color": "#D3D9D5",
+    "success": "#2D7A5A",
+    "warning": "#D4A017"
+  },
+  "spacing_and_layout": {
+    "marketing_pages": "Generous spacing (p-8 to p-24). Asymmetrical storytelling grids.",
+    "dashboard_pages": "Bento 'Control Room' grid (gap-6). High density but scannable.",
+    "general": "Optical alignment over geometrical. Use pure HTML + Tailwind for marketing overlaps. Grid children must be direct children."
+  },
+  "surface_strategies": {
+    "header": "Crystal Glassmorphism: bg-white/80 backdrop-blur-xl border-b border-white/40 shadow-sm. Never fully transparent.",
+    "cards_marketing": "Flat solid backgrounds (Soft Sage or Bone) with 1px subtle border, no heavy drop shadows, generous padding (p-8).",
+    "cards_dashboard": "Neumorphic/Tactile variant: Flat background matching parent, 1px border-black/5, subtle shadow on hover."
+  },
+  "motion_and_interaction": {
+    "hero_cta": "Subtle heartbeat pulse scale on the 'Pledge' button.",
+    "live_counter": "Animated number ticker for 'Total Pledges' and 'Lives Saved'.",
+    "scroll_reveal": "Framer motion staggered fade-up for education sections.",
+    "green_corridor": "SVG map of India with an animated 'glowing path' (stroke-dashoffset animation) simulating an ambulance route.",
+    "accessibility": "Respect prefers-reduced-motion for all heavy animations. Use aria-hidden for purely decorative animations."
+  },
+  "components_strategy": {
+    "marketing": "Raw HTML/Tailwind for hero, overlaps, and visual layouts. Avoid rigid generic cards.",
+    "forms_and_modals": "Shadcn UI (heavily customized to match the Organic theme, strip Vercel look). Use Shadcn Form, Input, Select, Checkbox.",
+    "dashboard": "Shadcn components (Tables, Tabs, Cards, Dialogs). Go cardless where possible to reduce visual clutter.",
+    "charts": "Shadcn charts / Recharts for Waitlist and Hospital analytics.",
+    "donor_card": "Generate dynamic HTML to PDF view, must include a visible QR code graphic."
+  },
+  "pages_and_structure": {
+    "landing_page": {
+      "hero": "Bold CTA 'Pledge Your Organs', background with subtle texture and an overlaid image of hopeful consultation.",
+      "live_stats": "Counter ticker highlighting transparency.",
+      "education": "Brain death explained simply, real donor stories (emotion first, use text-rich layout).",
+      "faq": "Accordion for myths vs facts."
+    },
+    "registration_flow": "Multi-step Aadhaar-based form. Clean, distraction-free layout.",
+    "hospital_portal": "Strict data dashboard. Login required. Waitlist viewer, Instant Matching, Green Corridor tracker.",
+    "admin_panel": "System management. Strict bento grid.",
+    "multi_language": "Floating language switcher (EN/HI/TA/MR) accessible globally in the header."
+  },
+  "media": [
+    {
+      "category": "Hero/Consultation",
+      "url": "https://images.unsplash.com/photo-1631558554226-fb65b25aa939",
+      "description": "A woman in a doctor's coat talking to another woman, representing hopeful consultation and trust.",
+      "placement": "Landing page hero section or About section."
+    },
+    {
+      "category": "Hospital Background",
+      "url": "https://images.unsplash.com/photo-1719934398679-d764c1410770",
+      "description": "Long modern hospital hallway.",
+      "placement": "Hospital Portal login background or Admin background."
+    },
+    {
+      "category": "Texture/Hope",
+      "url": "https://images.unsplash.com/photo-1607207219455-37c3a0a0f3a7",
+      "description": "Macro green leaves representing life, growth, and hope.",
+      "placement": "Subtle low-opacity background texture for the education/stories section."
+    }
+  ],
+  "testing_requirements": "All interactive elements MUST have data-testid attributes (e.g., data-testid='pledge-button', data-testid='aadhaar-input', data-testid='lang-switcher').",
+  "instructions_to_main_agent": [
+    "Note: Ensure code generation outputs .js/.jsx files as the workspace uses JavaScript, not TypeScript.",
+    "Follow the color palette strictly. Do NOT use default Tailwind colors like blue-600 or purple-500.",
+    "Implement multi-language UI logic (use a simple context or dictionary for EN, HI, TA, MR).",
+    "Design the Green Corridor tracker as a visual SVG component with moving paths.",
+    "Ensure the Donor Registration is a smooth multi-step experience using Shadcn forms.",
+    "Dashboard must be responsive, dense but scannable (SaaSFrame 2026 style) with modular layouts.",
+    "Ensure high contrast and APCA accessibility compliance across all text."
+  ]
+}

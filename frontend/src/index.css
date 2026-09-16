@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-base: #F9F7F3;
+    --bg-secondary: #EDF0EB;
+    --primary: #2A5A4A;
+    --primary-hover: #1E4236;
+    --accent: #E06D53;
+    --accent-hover: #C85A42;
+    --text-main: #1C2220;
+    --text-muted: #4A5D54;
+    --border-color: #D3D9D5;
+    --success: #2D7A5A;
+    --warning: #D4A017;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.02em; }
+.font-sans { font-family: 'Outfit', sans-serif; }
+
+@layer base {
+    :root {
+        --background: 40 25% 97%;
+        --foreground: 144 8% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 144 8% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 144 8% 12%;
+        --primary: 158 36% 26%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 96 8% 93%;
+        --secondary-foreground: 144 8% 12%;
+        --muted: 96 8% 93%;
+        --muted-foreground: 158 9% 33%;
+        --accent: 13 67% 60%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 132 6% 84%;
+        --input: 132 6% 84%;
+        --ring: 158 36% 26%;
+        --radius: 0.65rem;
+    }
+}
+
+@layer base {
+    body { @apply bg-background text-foreground; }
+}
+
+/* Buttons & utilities */
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    transition: background 200ms ease, transform 200ms ease;
+}
+.btn-primary:hover { background: var(--primary-hover); }
+
+.btn-accent {
+    background: var(--accent);
+    color: #fff;
+    transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.btn-accent:hover { background: var(--accent-hover); box-shadow: 0 8px 24px -10px rgba(224,109,83,0.6); }
+
+.text-primary-deep { color: var(--primary); }
+.text-accent-warm { color: var(--accent); }
+.bg-cream { background: var(--bg-base); }
+.bg-sage { background: var(--bg-secondary); }
+.border-subtle { border-color: var(--border-color); }
+
+/* Heartbeat */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.06); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.04); }
+    70% { transform: scale(1); }
+}
+.heartbeat { animation: heartbeat 1.6s ease-in-out infinite; transform-origin: center; }
+
+/* Glass header */
+.glass-header {
+    background: rgba(249, 247, 243, 0.78);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border-bottom: 1px solid rgba(211, 217, 213, 0.6);
+}
+
+/* Green corridor SVG path */
+@keyframes dashflow {
+    to { stroke-dashoffset: -1000; }
+}
+.corridor-path {
+    stroke-dasharray: 12 8;
+    animation: dashflow 14s linear infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.4; }
+}
+.pulse-dot { animation: pulseDot 1.8s ease-in-out infinite; transform-origin: center; }
+
+/* Scroll reveal */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fadeUp 0.8s ease forwards; }
+
+/* Texture overlay */
+.grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(28,34,32,0.04) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Donor Card print */
+@media print {
+    body * { visibility: hidden; }
+    #print-card, #print-card * { visibility: visible; }
+    #print-card { position: absolute; left: 0; top: 0; width: 100%; }
+}
+
+/* Hide number arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .heartbeat, .corridor-path, .pulse-dot, .reveal { animation: none !important; }
+}
